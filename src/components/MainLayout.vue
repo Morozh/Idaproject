@@ -84,5 +84,10 @@ export default {
     position: sticky;
     top: 24px;
   }
+
+  &__catalog {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
