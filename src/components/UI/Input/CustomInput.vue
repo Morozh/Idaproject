@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       inputValue: '',
-      errorText: '',
+      errorText: 'Поле является обязательным',
       isValid: false,
       isFocus: false,
       hasError: false,
@@ -46,7 +46,6 @@ export default {
       return {
         'input-field_has-error': this.hasError,
         'input-field_correct': this.isValid,
-        'input-field_focused': this.isFocus,
       };
     },
   },
@@ -102,6 +101,14 @@ export default {
 
     &::placeholder {
       color: $color-dark-gray;
+    }
+
+    &_correct {
+      border-color: $color-green;
+    }
+
+    &_has-error {
+      border-color: $color-pink;
     }
   }
 }

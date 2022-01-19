@@ -1,6 +1,6 @@
 $small: 576px;
 $mobile: 767px;
-$tablet: 1024px;
+$tablet: 1200px;
 
 @mixin respondTo($media) {
     @if $media==small {
