@@ -1,26 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="main">
+    <div class="main__wrapper">
+      <div class="main__layout">
+        <div class="main__layout-col">
+          <h1 class="main__title">Добавление товара</h1>
+
+          <custom-form />
+        </div>
+
+        <div class="main__layout-col">
+          <p>Карточки</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import CustomForm from '@/components/Form/CustomForm.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    CustomForm,
   },
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" src="./assets/scss/main.scss" />

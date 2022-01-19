@@ -1,0 +1,23 @@
+$small: 576px;
+$mobile: 767px;
+$tablet: 1024px;
+
+@mixin respondTo($media) {
+    @if $media==small {
+        @media only screen and (max-width: $small) {
+            @content;
+        }
+    }
+
+    @else if $media==mobile {
+        @media only screen and (max-width: $mobile) {
+            @content;
+        }
+    }
+
+    @else if $media==tablet {
+        @media only screen and (max-width: $tablet) {
+            @content;
+        }
+    }
+}
