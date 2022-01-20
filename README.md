@@ -2,6 +2,9 @@
 
 ## Project setup
 ```
+git clone
+```
+```
 npm install
 ```
 
