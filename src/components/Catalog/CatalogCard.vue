@@ -66,6 +66,7 @@ export default {
     min-height: 200px;
     max-height: 200px;
     overflow: hidden;
+    border-radius: 4px 4px 0 0;
 
     img {
       width: 100%;
