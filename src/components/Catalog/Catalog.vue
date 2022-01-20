@@ -28,31 +28,15 @@ export default {
   components: {
     CatalogCard,
   },
+  props: {
+    data: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
-      cards: [
-        {
-          id: 1,
-          title: 'Наименование товара 1',
-          img: 'https://root-nation.com/wp-content/uploads/2021/03/nikon-z-5-01.jpg',
-          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-          price: '10 000',
-        },
-        {
-          id: 2,
-          title: 'Наименование товара 2',
-          img: 'https://root-nation.com/wp-content/uploads/2021/03/nikon-z-5-01.jpg',
-          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-          price: '10 000',
-        },
-        {
-          id: 3,
-          title: 'Наименование товара 3',
-          img: 'https://root-nation.com/wp-content/uploads/2021/03/nikon-z-5-01.jpg',
-          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-          price: '10 000',
-        },
-      ],
+      cards: this.data,
     };
   },
   computed: {
@@ -65,6 +49,19 @@ export default {
       const cardToRemove = this.cards.find((card) => card.id === cardId);
       const cardIndex = this.cards.indexOf(cardToRemove);
       this.cards.splice(cardIndex, 1);
+      localStorage.setItem('cards', JSON.stringify(this.cards));
+    },
+  },
+  mounted() {
+    const localStorageData = localStorage.getItem('cards');
+
+    if (localStorageData !== '[]') {
+      this.cards = JSON.parse(localStorageData);
+    }
+  },
+  watch: {
+    data(val) {
+      this.cards = val;
     },
   },
 };
@@ -106,12 +103,12 @@ export default {
   transition: all .3s;
 }
 
-.card-enter, .card-leave-to {
+.card-enter-to, .card-leave-to {
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(10px);
 
   @include respondTo(mobile) {
-    transform: translateY(0) translateX(-10px);
+    transform: translateY(0) translateX(10px);
   }
 }
 

@@ -6,12 +6,12 @@
           <h1 class="main__title">{{ title }}</h1>
 
           <div class="main__form">
-            <custom-form />
+            <custom-form @sendData="showFormData" />
           </div>
         </div>
         <div class="main__layout-col">
           <div class="main__catalog">
-            <catalog />
+            <catalog :data="cardsData" />
           </div>
         </div>
       </div>
@@ -32,7 +32,13 @@ export default {
   data() {
     return {
       title: 'Добавление товара',
+      cardsData: [],
     };
+  },
+  methods: {
+    showFormData(data) {
+      this.cardsData = data;
+    },
   },
 };
 </script>

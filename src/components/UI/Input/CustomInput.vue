@@ -4,12 +4,12 @@
       class="input-field__label"
       :class="{ 'input-field__label_required': this.required }">{{ label }}</label>
     <input
-      v-model="inputValue"
       class="input-field__field"
       type="text"
+      :value="modelValue"
       :placeholder="placeholder"
       :class="classes"
-      :required="required"
+      @input="updateValue($event.target.value)"
     />
     <span class="input-field__msg" v-show="hasError">{{ errorText }}</span>
   </div>
@@ -31,6 +31,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    hasError: {
+      type: Boolean,
+      default: false,
+    },
+    modelValue: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -38,15 +46,19 @@ export default {
       errorText: 'Поле является обязательным',
       isValid: false,
       isFocus: false,
-      hasError: false,
     };
   },
   computed: {
     classes() {
       return {
-        'input-field_has-error': this.hasError,
-        'input-field_correct': this.isValid,
+        'input-field__field_has-error': this.hasError,
+        'input-field__field_correct': this.isValid,
       };
+    },
+  },
+  methods: {
+    updateValue(value) {
+      this.$emit('update:modelValue', value);
     },
   },
 };
@@ -110,6 +122,12 @@ export default {
     &_has-error {
       border-color: $color-pink;
     }
+  }
+
+  &__msg {
+    font-size: 8px;
+    line-height: 10px;
+    color: $color-pink;
   }
 }
 </style>

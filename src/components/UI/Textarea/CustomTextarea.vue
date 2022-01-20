@@ -2,12 +2,12 @@
   <div class="textarea-field">
     <label class="textarea-field__label">{{ label }}</label>
     <textarea
-      v-model="textareaValue"
       class="textarea-field__field"
       type="text"
+      :value="modelValue"
       :placeholder="placeholder"
       :class="classes"
-      :required="required"
+      @input="updateValue($event.target.value)"
     />
     <span class="textarea-field__msg" v-show="hasError">{{ errorText }}</span>
   </div>
@@ -25,9 +25,9 @@ export default {
       type: String,
       default: '',
     },
-    required: {
-      type: Boolean,
-      default: false,
+    modelValue: {
+      type: String,
+      default: null,
     },
   },
   data() {
@@ -44,6 +44,11 @@ export default {
         'textarea-field_has-error': this.hasError,
         'textarea-field_focused': this.isFocus,
       };
+    },
+  },
+  methods: {
+    updateValue(value) {
+      this.$emit('update:modelValue', value);
     },
   },
 };
@@ -99,7 +104,6 @@ export default {
       background-color: darkgrey;
       outline: 1px solid slategrey;
     }
-
   }
 }
 </style>
