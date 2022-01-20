@@ -67,8 +67,6 @@ import CustomInput from '@/components/UI/Input/CustomInput.vue';
 import CustomTextarea from '@/components/UI/Textarea/CustomTextarea.vue';
 import CustomButton from '@/components/UI/Button/CustomButton.vue';
 
-let idCard = 0;
-
 export default {
   name: 'CustomForm',
   components: {
@@ -111,15 +109,13 @@ export default {
       return false;
     },
     sendData() {
-      idCard += 1;
-
       this.v$.$touch();
 
       if (this.v$.form.$error) {
         alert('Не все поля корректно заполнены');
       } else {
         const data = {
-          id: idCard,
+          id: this.cardsData.length,
           title: this.form.productName,
           img: this.form.productImgLink,
           description: this.form.productDescription,
