@@ -109,8 +109,6 @@ export default {
           return a.title > b.title ? 1 : 0;
         });
       }
-
-      console.log(this.cards);
     },
     deleteCardFromCatalog(cardId) {
       const cardToRemove = this.cards.find((card) => card.id === cardId);
