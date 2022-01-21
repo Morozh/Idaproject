@@ -1,5 +1,8 @@
 # idaproject
-
+## Project setup
+```
+Based on Vue 3 for modern browsers (Google/Yandex etc.).
+```
 ## Project setup
 ```
 git clone
